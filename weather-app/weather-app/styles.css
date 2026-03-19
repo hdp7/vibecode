@@ -1,0 +1,37 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b132b;
+  --card: #1c2541;
+  --text: #e0e6f0;
+  --muted: #9fb3c8;
+  --accent: #5bc0be;
+}
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); }
+.container { max-width: 920px; margin: 2rem auto; padding: 0 1rem; }
+h1 { margin: 0 0 1rem; }
+.card { background: var(--card); border-radius: 16px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.muted { color: var(--muted); }
+.hidden { display: none; }
+
+.controls label { display: block; margin-bottom: .5rem; color: var(--muted); }
+.row { display: grid; grid-template-columns: 1fr auto auto; gap: .5rem; }
+input[type="text"] { width: 100%; padding: .7rem .9rem; border-radius: 12px; border: 1px solid #32405f; background: #0f1a3a; color: var(--text); }
+button { padding: .7rem 1rem; border-radius: 12px; border: 1px solid #2a385b; background: #223055; color: #fff; cursor: pointer; }
+button:hover { background: #2a3a66; }
+
+.suggestions { display: grid; gap: .5rem; margin-top: .75rem; }
+.suggestion { padding: .5rem .75rem; background: #0f1a3a; border: 1px solid #2a385b; border-radius: 12px; cursor: pointer; }
+.suggestion:hover { background: #13214a; }
+
+#current h2 { margin: 0 0 .5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; }
+.tile { background: #0f1a3a; border-radius: 12px; padding: .75rem; border: 1px solid #2a385b; }
+.kv { display: flex; justify-content: space-between; gap: .5rem; }
+
+.scroll-x { overflow-x: auto; white-space: nowrap; padding-bottom: .25rem; }
+.hour { display: inline-block; min-width: 100px; padding: .6rem; margin-right: .5rem; border-radius: 12px; background: #0f1a3a; border: 1px solid #2a385b; text-align: center; }
+.day { display: grid; grid-template-columns: 1fr auto auto; gap: .5rem; align-items: center; padding: .6rem .75rem; border-bottom: 1px dashed #2a385b; }
+.day:last-child { border-bottom: 0; }
+.temp { font-weight: 700; color: var(--accent); }
+
+.small { font-size: .9rem; }

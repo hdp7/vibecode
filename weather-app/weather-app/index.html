@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>🌤️ Weather</h1>
+
+    <section class="controls card">
+      <form id="search-form">
+        <label for="q">Search city</label>
+        <div class="row">
+          <input id="q" name="q" type="text" placeholder="e.g., Williamsport" autocomplete="off" />
+          <button type="submit">Search</button>
+          <button id="use-gps" type="button" title="Use my location">📍</button>
+        </div>
+      </form>
+      <div id="status" class="muted"></div>
+      <div id="suggestions" class="suggestions"></div>
+    </section>
+
+    <section id="current" class="card hidden"></section>
+    <section id="hourly" class="card hidden"></section>
+    <section id="daily" class="card hidden"></section>
+
+    <footer class="muted">
+      <p>Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open‑Meteo</a>. No API key required.</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
