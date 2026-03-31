@@ -1,6 +1,8 @@
 // Simple Weather App using Open‑Meteo APIs (no key needed)
 // Docs: https://open-meteo.com/
 
+<script src="https://unpkg.com/dompurify@3.0.6/dist/purify.min.js"></script>
+
 const qs = (sel, el = document) => el.querySelector(sel);
 const qsa = (sel, el = document) => [...el.querySelectorAll(sel)];
 const $status = qs('#status');
@@ -51,7 +53,9 @@ async function forecast(lat, lon) {
 
 function renderCurrent(place, data) {
   const c = data.current;
-  $current.classList.remove('hidden');
+    $current.classList.remove('hidden');
+
+  //This needs to be sanitized
   $current.innerHTML = `
     <h2>Now in ${place}</h2>
     <div class="grid">
@@ -79,7 +83,8 @@ function renderHourly(data) {
       <div class="small">Rain ${h.precipitation_probability[i] ?? 0}%</div>
     </div>`;
   }
-  html += '</div>';
+    html += '</div>';
+  //This needs to be sanitized
   $hourly.innerHTML = html;
 }
 
@@ -95,6 +100,7 @@ function renderDaily(data) {
       <div class="small muted">Precip: ${d.precipitation_sum[i]} in</div>
     </div>`;
   }
+  //This needs to be sanitized
   $daily.innerHTML = `<h2>7‑Day Forecast</h2>${rows}`;
 }
 
@@ -107,7 +113,8 @@ async function loadPlace(place, lat, lon) {
     renderDaily(data);
     setStatus('');
   } catch (e) {
-    console.error(e);
+      //Leakage of information
+     //console.error(e);
     setStatus('Could not load forecast. Please try again.', 'error');
   }
 }
@@ -124,7 +131,8 @@ qs('#search-form').addEventListener('submit', async (e) => {
     setStatus(results.length ? 'Pick a location:' : 'No matches');
     $sugs.innerHTML = results.map(r => `<div class="suggestion" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${r.name}">${r.name}</div>`).join('');
   } catch (e) {
-    console.error(e);
+      //Leakage of information
+    //console.error(e);
     setStatus('Search failed', 'error');
   }
 });
